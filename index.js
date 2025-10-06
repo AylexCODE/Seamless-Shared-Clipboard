@@ -1,9 +1,18 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const rateLimit = require('express-rate-limit');
+
+const maxLimit = rateLimit({
+    windowMs: 60 * 1000,
+    max: 25,
+    message: "Request limit exceeded"
+});
 
 app.use(cors());
 app.use(express.json());
+app.use(maxLimit);
+app.set('trust proxy', 1);
 
 const port = process.env.port || 8080;
 
