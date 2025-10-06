@@ -1,0 +1,1 @@
+# Seamless-Shared-Clipboard
